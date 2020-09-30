@@ -1,5 +1,7 @@
 import React from 'react';
 import { FlatList, ActivityIndicator, Text, View } from 'react-native';
+import config from '../config'
+import apis from '../apis/index'
 
 export default class BlogAll extends React.Component {
 
@@ -12,10 +14,9 @@ export default class BlogAll extends React.Component {
     }
 
     componentDidMount() {
-        return fetch('http://39.105.188.13/api/get/blogList?pageIndex=1&pageSize=10')
+        return fetch(`${config.server}${apis.blogList.devUrl}?pageIndex=1&pageSize=10`)
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log('res start ...', responseJson, 'test res')
                 this.setState({
                     isLoading: false,
                     dataSource: responseJson
@@ -29,18 +30,11 @@ export default class BlogAll extends React.Component {
             });
     }
 
-    formateList = () => {
-        let arr = []
-        this.state.responseJson.map()
-    }
-
-
     render() {
         //  let arr = this.state.dataSource
         return (
             <View style={{ flex: 1, paddingTop: 20 }}>
-                <Text>blog all</Text>
-                <Text>{this.state.dataSource.toString()}</Text>
+                <Text>blog All</Text>
                 <FlatList
                     data={this.state.dataSource}
                     renderItem={({ item }) => <Text key={item._id} >{item.title}</Text>}
