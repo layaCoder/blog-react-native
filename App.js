@@ -22,8 +22,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // import Layout from './src/layout'
-import BlogAll from './src/blogall'
-import Detail from './src/detial'
+import BlogAll from './src/BlogAll'
+import Detail from './src/Detial'
 
 const Stack = createStackNavigator();
 
